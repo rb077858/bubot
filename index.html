@@ -82,7 +82,6 @@
     .info { padding: 16px 20px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
     .info h2 { margin: 0; font-size: 1.3rem; }
     .info p { margin: 0; color: var(--muted); flex: 1; }
-    .info .btn { align-self: flex-start; margin-top: 8px; padding: 9px 18px; font-size: .95rem; }
 
     footer { text-align: center; color: var(--muted); padding: 24px 16px 40px; border-top: 1px solid var(--line); }
 
@@ -121,7 +120,6 @@
     <div class="info">
       <h2></h2>
       <p></p>
-      <a class="btn" target="_blank" rel="noopener"></a>
     </div>
   </dialog>
 
@@ -138,7 +136,7 @@
     document.getElementById("site-subtitle").textContent = SITE.subtitle;
     document.getElementById("site-about").textContent = SITE.about;
     document.getElementById("footer").textContent = `© ${new Date().getFullYear()} ${SITE.title} · כל הבובות בעבודת יד`;
-    setBtn(document.getElementById("contact-main"), waLink(SITE.whatsappGeneralMessage), "צור קשר בוואטסאפ");
+    setBtn(document.getElementById("contact-main"), waLink(SITE.whatsappMessage), "צור קשר בוואטסאפ");
 
     const viewer = document.getElementById("viewer");
     const grid = document.getElementById("grid");
@@ -148,7 +146,6 @@
       img.src = doll.image; img.alt = doll.name;
       viewer.querySelector("h2").textContent = doll.name;
       viewer.querySelector("p").textContent = doll.description;
-      setBtn(viewer.querySelector(".btn"), waLink(SITE.whatsappMessage.replace("{name}", doll.name)), "מתעניינים? דברו איתי");
       viewer.showModal();
     }
     viewer.querySelector(".close").onclick = () => viewer.close();
@@ -159,12 +156,11 @@
       card.className = "card";
       card.innerHTML = `
         <button class="stage" aria-label="הגדלה"><img loading="lazy"></button>
-        <div class="info"><h2></h2><p></p><a class="btn" target="_blank" rel="noopener"></a></div>`;
+        <div class="info"><h2></h2><p></p></div>`;
       const img = card.querySelector("img");
       img.src = doll.image; img.alt = doll.name;
       card.querySelector("h2").textContent = doll.name;
       card.querySelector("p").textContent = doll.description;
-      setBtn(card.querySelector(".btn"), waLink(SITE.whatsappMessage.replace("{name}", doll.name)), "צור קשר");
       card.querySelector(".stage").onclick = () => openViewer(doll);
       grid.appendChild(card);
     }
